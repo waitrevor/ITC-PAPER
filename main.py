@@ -32,9 +32,9 @@ def parse_aff3ct_file(file_path):
 # --- CONFIGURATION ---
 # List all your AFF3CT text files here
 results_files = [
-    "k4096_r23_BF_MWBF_results.txt",
-    "k4096_r23_BP_F_SPA_results.txt",
-    "k4096_r23_BP_HL_OMS_results.txt"
+    "k4096_r45_BF_MWBF_results.txt",
+    "k4096_r45_BP_F_SPA_results.txt",
+    "k4096_r45_BP_HL_OMS_results.txt"
 ]
 algorithms = [
     'MODIFIED WEIGHT BIT FLIPPING',
@@ -70,7 +70,7 @@ ax.yaxis.set_minor_formatter(ticker.LogFormatterMathtext())
 # Clean up visual grid and labels
 plt.xlabel('Eb/N0 (dB)', fontsize=12)
 plt.ylabel('Bit Error Rate (BER)', fontsize=12)
-plt.title('AFF3CT Performance Comparison', fontsize=14, fontweight='bold')
+# plt.title('AFF3CT Performance Comparison', fontsize=14, fontweight='bold')
 plt.grid(True, which="both", linestyle="--", alpha=0.5)
 plt.legend(loc="lower left", fontsize=10)
 
