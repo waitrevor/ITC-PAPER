@@ -57,7 +57,7 @@ for i, file_path in enumerate(results_files):
     label_name = algorithms[i]
     
     # Plot Bit Error Rate (BER) with a solid line
-    plt.semilogy(ebn0, ber, linestyle='-', marker='o', label=f'{label_name} (BER)')
+    plt.semilogy(ebn0, ber, linestyle='-', label=f'{label_name} (BER)')
     
 
 # --- Y-AXIS & GRAPH FORMATTING ---
