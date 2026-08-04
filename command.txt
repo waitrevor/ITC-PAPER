@@ -1,0 +1,8 @@
+./aff3ct -C LDPC --sim-type BFER --dec-type BP_FLOODING --dec-h-path ./conf/dec/LDPC/AR4JA_4096_8192.qc --chn-type AWGN -m 1.0 -M 3.0 -s 0.5
+
+
+aff3ct -C LDPC --dec-type BIT_FLIPPING --dec-implem PPBF --dec-h-path your_matrix.alist --dec-ppbf-proba "0,0.01,0.05,0.1,0.2,0.5,0.8,1.0" [other parameters...]
+
+./aff3ct -C LDPC --sim-type BFER --dec-type BIT_FLIPPING --dec-implem MWBF --dec-h-path ./conf/dec/LDPC/irig106/k4096_r45.alist --chn-type AWGN -m 1.0 -M 3.0 -s 0.5 > k4096_r45_BF_MWBF_results.txt
+./aff3ct -C LDPC --sim-type BFER --dec-type BP_FLOODING --dec-implem SPA --dec-h-path ./conf/dec/LDPC/irig106/k4096_r45.alist --chn-type AWGN -m 1.0 -M 3.0 -s 0.5 > k4096_r45_BP_F_SPA_results.txt
+./aff3ct -C LDPC --sim-type BFER --dec-type BP_HORIZONTAL_LAYERED --dec-implem OMS --dec-h-path ./conf/dec/LDPC/irig106/k4096_r45.alist --chn-type AWGN -m 1.0 -M 3.0 -s 0.5 > k4096_r45_BP_HL_OMS_results.txt

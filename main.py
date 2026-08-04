@@ -32,9 +32,9 @@ def parse_aff3ct_file(file_path):
 # --- CONFIGURATION ---
 # List all your AFF3CT text files here
 results_files = [
-    "k4096_r45_BF_MWBF_results.txt",
-    "k4096_r45_BP_F_SPA_results.txt",
-    "k4096_r45_BP_HL_OMS_results.txt"
+    "testing.txt",
+    # "k4096_r45_BP_F_SPA_results.txt",
+    # "k4096_r45_BP_HL_OMS_results.txt"
 ]
 algorithms = [
     'MODIFIED WEIGHT BIT FLIPPING',
