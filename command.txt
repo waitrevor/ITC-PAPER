@@ -12,6 +12,20 @@ aff3ct -C LDPC --dec-type BIT_FLIPPING --dec-implem PPBF --dec-h-path your_matri
 k1025_r12
 
 ./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 1024 \
+  --dec-type BIT_FLIPPING --dec-implem MWBF \
+  --dec-h-path ./conf/dec/LDPC/k1024_r12.alist \
+  --pct-type LDPC --pct-fra-size 2048 --pct-pattern "1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
+  --dec-ite 30 \
+  --mnt-max-fe 1000000 \
+  --sim-max-fra 10000 \
+  --sim-crit-nostop \
+  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
+  > k1024_r12_BF_MWBF_results.txt
+
+
+./aff3ct -C LDPC --sim-type BFER \
   --dec-type BIT_FLIPPING --dec-implem MWBF \
   --dec-h-path ./conf/dec/LDPC/k1024_r12.alist \
   --dec-ite 30 \
@@ -107,6 +121,36 @@ k4096
 
 ./aff3ct -C LDPC --sim-type BFER \
   --dec-type BIT_FLIPPING --dec-implem MWBF \
+  --dec-h-path ./conf/dec/LDPC/AR4JA_4096_8192.qc \
+  --dec-ite 30 \
+  --mnt-max-fe 1000000 \
+  --sim-max-fra 10000 \
+  --sim-crit-nostop \
+  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
+  > k4096_r12_BF_MWBF_results.txt
+
+  ./aff3ct -C LDPC --sim-type BFER \
+  --dec-type BP_FLOODING --dec-implem SPA \
+  --dec-h-path ./conf/dec/LDPC/AR4JA_4096_8192.qc \
+  --dec-ite 30 \
+  --mnt-max-fe 1000000 \
+  --sim-max-fra 10000 \
+  --sim-crit-nostop \
+  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
+  > k4096_r12_BP_F_SPA_results.txt
+
+  ./aff3ct -C LDPC --sim-type BFER \
+  --dec-type BP_HORIZONTAL_LAYERED --dec-implem OMS \
+  --dec-h-path ./conf/dec/LDPC/AR4JA_4096_8192.qc \
+  --dec-ite 30 \
+  --mnt-max-fe 1000000 \
+  --sim-max-fra 10000 \
+  --sim-crit-nostop \
+  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
+  > k4096_r12_BP_HL_OMS_results.txt
+
+./aff3ct -C LDPC --sim-type BFER \
+  --dec-type BIT_FLIPPING --dec-implem MWBF \
   --dec-h-path ./conf/dec/LDPC/k4096_r12.alist \
   --dec-ite 30 \
   --mnt-max-fe 1000000 \
@@ -194,3 +238,6 @@ k4096
   --sim-crit-nostop \
   --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
   > k4096_r45_BP_HL_OMS_results.txt
+
+
+  Novel multi-Gbps bit flipping decoders for punctured ldpc codes

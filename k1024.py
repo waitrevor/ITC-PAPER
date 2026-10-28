@@ -76,7 +76,10 @@ NUMBER_PATTERN = re.compile(
 
 
 def parse_aff3ct_file(file_path):
-    """Extract Eb/N0, BER, and FER columns from an AFF3CT output file."""
+    """Extract Eb/N0, BE, BER, and FER from an AFF3CT output file.
+
+    Include the first row where BE = 0, then ignore all later rows.
+    """
 
     ebn0 = []
     ber = []
@@ -103,6 +106,7 @@ def parse_aff3ct_file(file_path):
 
             try:
                 current_ebn0 = float(numbers[1])
+                current_be = float(numbers[3])
                 current_ber = float(numbers[5])
                 current_fer = float(numbers[6])
             except ValueError:
@@ -111,9 +115,14 @@ def parse_aff3ct_file(file_path):
             if current_ber < 0 or current_fer < 0:
                 continue
 
+            # Keep this row, including the first BE=0 row.
             ebn0.append(current_ebn0)
             ber.append(current_ber)
             fer.append(current_fer)
+
+            # Ignore every subsequent result row in this file.
+            if current_be == 0:
+                break
 
     return ebn0, ber, fer
 
@@ -122,8 +131,8 @@ def find_snr_at_target(ebn0, ber, target_ber):
     """Estimate Eb/N0 where a BER curve crosses target_ber.
 
     BER is interpolated in log10(BER), which is appropriate for a
-    semilog BER plot. If a curve reaches BER=0, the next available SNR
-    is returned as an upper-bound estimate.
+    semilog BER plot. If BER reaches zero, the corresponding SNR is
+    returned as an upper-bound estimate.
     """
 
     if len(ebn0) < 2 or len(ber) < 2:
@@ -246,33 +255,6 @@ def main():
             zorder=1,
         )
 
-    # Put labels directly beside the reference lines.
-    # ax_ber.text(
-    #     1.01,
-    #     TARGET_BER,
-    #     r"Target BER = $10^{-4}$",
-    #     transform=ax_ber.get_yaxis_transform(),
-    #     ha="left",
-    #     va="bottom",
-    #     color="black",
-    #     fontsize=16,
-    #     clip_on=False,
-    #     bbox=dict(facecolor="white", alpha=0.01, edgecolor="none"),
-    # )
-
-    # if SHOW_UNCODED_REFERENCE:
-    #     ax_ber.text(
-    #         UNCODED_BPSK_EBN0_AT_TARGET,
-    #         -0.01,
-    #         "Uncoded BPSK reference (8.4 dB)",
-    #         transform=ax_ber.get_xaxis_transform(),
-    #         ha="left",
-    #         va="top",
-    #         color="black",
-    #         fontsize=16,
-    #         clip_on=False,
-    #     )
-
     # --------------------------------------------------------
     # Axis formatting
     # --------------------------------------------------------
@@ -304,7 +286,8 @@ def main():
         markerscale=1.5,
         handlelength=3,
         labelspacing=0.8,
-        )
+    )
+
     # Reserve the right side of the figure for the legend.
     plt.tight_layout(rect=[0, 0, 0.79, 1], w_pad=4.0)
 
