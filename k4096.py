@@ -19,15 +19,15 @@ UNCODED_BPSK_EBN0_AT_TARGET = 8.4  # dB, approximately
 SHOW_UNCODED_REFERENCE = True
 
 RESULTS_FILES = [
-    "k4096_r12_BF_MWBF_results.txt",
-    "k4096_r12_BP_F_SPA_results.txt",
-    "k4096_r12_BP_HL_OMS_results.txt",
-    "k4096_r23_BF_MWBF_results.txt",
-    "k4096_r23_BP_F_SPA_results.txt",
-    "k4096_r23_BP_HL_OMS_results.txt",
-    "k4096_r45_BF_MWBF_results.txt",
-    "k4096_r45_BP_F_SPA_results.txt",
-    "k4096_r45_BP_HL_OMS_results.txt",
+    "k4096_r12_BF_MWBF_results_punctured.txt",
+    "k4096_r12_BP_F_SPA_results_punctured.txt",
+    "k4096_r12_BP_HL_OMS_results_punctured.txt",
+    "k4096_r23_BF_MWBF_results_punctured.txt",
+    "k4096_r23_BP_F_SPA_results_punctured.txt",
+    "k4096_r23_BP_HL_OMS_results_punctured.txt",
+    "k4096_r45_BF_MWBF_results_punctured.txt",
+    "k4096_r45_BP_F_SPA_results_punctured.txt",
+    "k4096_r45_BP_HL_OMS_results_punctured.txt",
 ]
 
 

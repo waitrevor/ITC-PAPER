@@ -1,15 +1,6 @@
-./aff3ct -C LDPC --sim-type BFER --dec-type BP_FLOODING --dec-h-path ./conf/dec/LDPC/AR4JA_4096_8192.qc --chn-type AWGN -m 1.0 -M 3.0 -s 0.5
-
-
-aff3ct -C LDPC --dec-type BIT_FLIPPING --dec-implem PPBF --dec-h-path your_matrix.alist --dec-ppbf-proba "0,0.01,0.05,0.1,0.2,0.5,0.8,1.0" [other parameters...]
-
-./aff3ct -C LDPC --sim-type BFER --dec-type BIT_FLIPPING --dec-implem MWBF --dec-h-path ./conf/dec/LDPC/irig106/k4096_r45.alist --chn-type AWGN -m 1.0 -M 3.0 -s 0.5 > k4096_r45_BF_MWBF_results.txt
-./aff3ct -C LDPC --sim-type BFER --dec-type BP_FLOODING --dec-implem SPA --dec-h-path ./conf/dec/LDPC/irig106/k4096_r45.alist --chn-type AWGN -m 1.0 -M 3.0 -s 0.5 > k4096_r45_BP_F_SPA_results.txt
-./aff3ct -C LDPC --sim-type BFER --dec-type BP_HORIZONTAL_LAYERED --dec-implem OMS --dec-h-path ./conf/dec/LDPC/irig106/k4096_r45.alist --chn-type AWGN -m 1.0 -M 3.0 -s 0.5 > k4096_r45_BP_HL_OMS_results.txt
-
 ============================================================
 
-k1025_r12
+k1024
 
 ./aff3ct -C LDPC --sim-type BFER \
   --enc-type AZCW --enc-info-bits 1024 \
@@ -21,223 +12,234 @@ k1025_r12
   --mnt-max-fe 1000000 \
   --sim-max-fra 10000 \
   --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k1024_r12_BF_MWBF_results.txt
-
-
-./aff3ct -C LDPC --sim-type BFER \
-  --dec-type BIT_FLIPPING --dec-implem MWBF \
-  --dec-h-path ./conf/dec/LDPC/k1024_r12.alist \
-  --dec-ite 30 \
-  --mnt-max-fe 1000000 \
-  --sim-max-fra 10000 \
-  --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k1024_r12_BF_MWBF_results.txt
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k1024_r12_BF_MWBF_results_punctured.txt
 
   ./aff3ct -C LDPC --sim-type BFER \
-  --dec-type BP_FLOODING --dec-implem SPA \
-  --dec-h-path ./conf/dec/LDPC/k1024_r12.alist \
-  --dec-ite 30 \
-  --mnt-max-fe 1000000 \
-  --sim-max-fra 10000 \
-  --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k1024_r12_BP_F_SPA_results.txt
-
-  ./aff3ct -C LDPC --sim-type BFER \
-  --dec-type BP_HORIZONTAL_LAYERED --dec-implem OMS \
-  --dec-h-path ./conf/dec/LDPC/k1024_r12.alist \
-  --dec-ite 30 \
-  --mnt-max-fe 1000000 \
-  --sim-max-fra 10000 \
-  --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k1024_r12_BP_HL_OMS_results.txt
-
-./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 1024 \
   --dec-type BIT_FLIPPING --dec-implem MWBF \
   --dec-h-path ./conf/dec/LDPC/k1024_r23.alist \
+  --pct-type LDPC --pct-fra-size 1536 --pct-pattern "1,1,1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
   --dec-ite 30 \
   --mnt-max-fe 1000000 \
   --sim-max-fra 10000 \
   --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k1024_r23_BF_MWBF_results.txt
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k1024_r23_BF_MWBF_results_punctured.txt
 
   ./aff3ct -C LDPC --sim-type BFER \
-  --dec-type BP_FLOODING --dec-implem SPA \
-  --dec-h-path ./conf/dec/LDPC/k1024_r23.alist \
-  --dec-ite 30 \
-  --mnt-max-fe 1000000 \
-  --sim-max-fra 10000 \
-  --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k1024_r23_BP_F_SPA_results.txt
-
-  ./aff3ct -C LDPC --sim-type BFER \
-  --dec-type BP_HORIZONTAL_LAYERED --dec-implem OMS \
-  --dec-h-path ./conf/dec/LDPC/k1024_r23.alist \
-  --dec-ite 30 \
-  --mnt-max-fe 1000000 \
-  --sim-max-fra 10000 \
-  --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k1024_r23_BP_HL_OMS_results.txt
-
-./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 1024 \
   --dec-type BIT_FLIPPING --dec-implem MWBF \
   --dec-h-path ./conf/dec/LDPC/k1024_r45.alist \
+  --pct-type LDPC --pct-fra-size 1280 --pct-pattern "1,1,1,1,1,1,1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
   --dec-ite 30 \
   --mnt-max-fe 1000000 \
   --sim-max-fra 10000 \
   --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k1024_r45_BF_MWBF_results.txt
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k1024_r45_BF_MWBF_results_punctured.txt
 
   ./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 1024 \
+  --dec-type BP_FLOODING --dec-implem SPA \
+  --dec-h-path ./conf/dec/LDPC/k1024_r12.alist \
+  --pct-type LDPC --pct-fra-size 2048 --pct-pattern "1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
+  --dec-ite 30 \
+  --mnt-max-fe 1000000 \
+  --sim-max-fra 10000 \
+  --sim-crit-nostop \
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k1024_r12_BP_F_SPA_results_punctured.txt 
+
+  ./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 1024 \
+  --dec-type BP_FLOODING --dec-implem SPA \
+  --dec-h-path ./conf/dec/LDPC/k1024_r23.alist \
+  --pct-type LDPC --pct-fra-size 1536 --pct-pattern "1,1,1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
+  --dec-ite 30 \
+  --mnt-max-fe 1000000 \
+  --sim-max-fra 10000 \
+  --sim-crit-nostop \
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k1024_r23_BP_F_SPA_results_punctured.txt
+
+  ./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 1024 \
   --dec-type BP_FLOODING --dec-implem SPA \
   --dec-h-path ./conf/dec/LDPC/k1024_r45.alist \
+  --pct-type LDPC --pct-fra-size 1280 --pct-pattern "1,1,1,1,1,1,1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
   --dec-ite 30 \
   --mnt-max-fe 1000000 \
   --sim-max-fra 10000 \
   --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k1024_r45_BP_F_SPA_results.txt
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k1024_r45_BP_F_SPA_results_punctured.txt
 
   ./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 1024 \
   --dec-type BP_HORIZONTAL_LAYERED --dec-implem OMS \
-  --dec-h-path ./conf/dec/LDPC/k1024_r45.alist \
+  --dec-h-path ./conf/dec/LDPC/k1024_r12.alist \
+  --pct-type LDPC --pct-fra-size 2048 --pct-pattern "1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
   --dec-ite 30 \
   --mnt-max-fe 1000000 \
   --sim-max-fra 10000 \
   --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k1024_r45_BP_HL_OMS_results.txt
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k1024_r12_BP_HL_OMS_results_punctured.txt 
+
+  ./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 1024 \
+  --dec-type BP_HORIZONTAL_LAYERED --dec-implem OMS \
+  --dec-h-path ./conf/dec/LDPC/k1024_r23.alist \
+  --pct-type LDPC --pct-fra-size 1536 --pct-pattern "1,1,1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
+  --dec-ite 30 \
+  --mnt-max-fe 1000000 \
+  --sim-max-fra 10000 \
+  --sim-crit-nostop \
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k1024_r23_BP_HL_OMS_results_punctured.txt
+
+  ./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 1024 \
+  --dec-type BP_HORIZONTAL_LAYERED --dec-implem OMS \
+  --dec-h-path ./conf/dec/LDPC/k1024_r45.alist \
+  --pct-type LDPC --pct-fra-size 1280 --pct-pattern "1,1,1,1,1,1,1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
+  --dec-ite 30 \
+  --mnt-max-fe 1000000 \
+  --sim-max-fra 10000 \
+  --sim-crit-nostop \
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k1024_r45_BP_HL_OMS_results_punctured.txt
+
 
 ============================================================
 
 k4096
 
 ./aff3ct -C LDPC --sim-type BFER \
-  --dec-type BIT_FLIPPING --dec-implem MWBF \
-  --dec-h-path ./conf/dec/LDPC/AR4JA_4096_8192.qc \
-  --dec-ite 30 \
-  --mnt-max-fe 1000000 \
-  --sim-max-fra 10000 \
-  --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k4096_r12_BF_MWBF_results.txt
-
-  ./aff3ct -C LDPC --sim-type BFER \
-  --dec-type BP_FLOODING --dec-implem SPA \
-  --dec-h-path ./conf/dec/LDPC/AR4JA_4096_8192.qc \
-  --dec-ite 30 \
-  --mnt-max-fe 1000000 \
-  --sim-max-fra 10000 \
-  --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k4096_r12_BP_F_SPA_results.txt
-
-  ./aff3ct -C LDPC --sim-type BFER \
-  --dec-type BP_HORIZONTAL_LAYERED --dec-implem OMS \
-  --dec-h-path ./conf/dec/LDPC/AR4JA_4096_8192.qc \
-  --dec-ite 30 \
-  --mnt-max-fe 1000000 \
-  --sim-max-fra 10000 \
-  --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k4096_r12_BP_HL_OMS_results.txt
-
-./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 4096 \
   --dec-type BIT_FLIPPING --dec-implem MWBF \
   --dec-h-path ./conf/dec/LDPC/k4096_r12.alist \
+  --pct-type LDPC --pct-fra-size 8192 --pct-pattern "1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
   --dec-ite 30 \
   --mnt-max-fe 1000000 \
   --sim-max-fra 10000 \
   --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k4096_r12_BF_MWBF_results.txt
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k4096_r12_BF_MWBF_results_punctured.txt
 
   ./aff3ct -C LDPC --sim-type BFER \
-  --dec-type BP_FLOODING --dec-implem SPA \
-  --dec-h-path ./conf/dec/LDPC/k4096_r12.alist \
-  --dec-ite 30 \
-  --mnt-max-fe 1000000 \
-  --sim-max-fra 10000 \
-  --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k4096_r12_BP_F_SPA_results.txt
-
-  ./aff3ct -C LDPC --sim-type BFER \
-  --dec-type BP_HORIZONTAL_LAYERED --dec-implem OMS \
-  --dec-h-path ./conf/dec/LDPC/k4096_r12.alist \
-  --dec-ite 30 \
-  --mnt-max-fe 1000000 \
-  --sim-max-fra 10000 \
-  --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k4096_r12_BP_HL_OMS_results.txt
-
-./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 4096 \
   --dec-type BIT_FLIPPING --dec-implem MWBF \
   --dec-h-path ./conf/dec/LDPC/k4096_r23.alist \
+  --pct-type LDPC --pct-fra-size 6144 --pct-pattern "1,1,1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
   --dec-ite 30 \
   --mnt-max-fe 1000000 \
   --sim-max-fra 10000 \
   --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k4096_r23_BF_MWBF_results.txt
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k4096_r23_BF_MWBF_results_punctured.txt
 
   ./aff3ct -C LDPC --sim-type BFER \
-  --dec-type BP_FLOODING --dec-implem SPA \
-  --dec-h-path ./conf/dec/LDPC/k4096_r23.alist \
-  --dec-ite 30 \
-  --mnt-max-fe 1000000 \
-  --sim-max-fra 10000 \
-  --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k4096_r23_BP_F_SPA_results.txt
-
-  ./aff3ct -C LDPC --sim-type BFER \
-  --dec-type BP_HORIZONTAL_LAYERED --dec-implem OMS \
-  --dec-h-path ./conf/dec/LDPC/k4096_r23.alist \
-  --dec-ite 30 \
-  --mnt-max-fe 1000000 \
-  --sim-max-fra 10000 \
-  --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k4096_r23_BP_HL_OMS_results.txt
-
-./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 4096 \
   --dec-type BIT_FLIPPING --dec-implem MWBF \
   --dec-h-path ./conf/dec/LDPC/k4096_r45.alist \
+  --pct-type LDPC --pct-fra-size 5120 --pct-pattern "1,1,1,1,1,1,1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
   --dec-ite 30 \
   --mnt-max-fe 1000000 \
   --sim-max-fra 10000 \
   --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k4096_r45_BF_MWBF_results.txt
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k4096_r45_BF_MWBF_results_punctured.txt
 
   ./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 4096 \
+  --dec-type BP_FLOODING --dec-implem SPA \
+  --dec-h-path ./conf/dec/LDPC/k4096_r12.alist \
+  --pct-type LDPC --pct-fra-size 8192 --pct-pattern "1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
+  --dec-ite 30 \
+  --mnt-max-fe 1000000 \
+  --sim-max-fra 10000 \
+  --sim-crit-nostop \
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k4096_r12_BP_F_SPA_results_punctured.txt 
+
+  ./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 4096 \
+  --dec-type BP_FLOODING --dec-implem SPA \
+  --dec-h-path ./conf/dec/LDPC/k4096_r23.alist \
+  --pct-type LDPC --pct-fra-size 6144 --pct-pattern "1,1,1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
+  --dec-ite 30 \
+  --mnt-max-fe 1000000 \
+  --sim-max-fra 10000 \
+  --sim-crit-nostop \
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k4096_r23_BP_F_SPA_results_punctured.txt
+
+  ./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 4096 \
   --dec-type BP_FLOODING --dec-implem SPA \
   --dec-h-path ./conf/dec/LDPC/k4096_r45.alist \
+  --pct-type LDPC --pct-fra-size 5120 --pct-pattern "1,1,1,1,1,1,1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
   --dec-ite 30 \
   --mnt-max-fe 1000000 \
   --sim-max-fra 10000 \
   --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k4096_r45_BP_F_SPA_results.txt
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k4096_r45_BP_F_SPA_results_punctured.txt
 
   ./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 4096 \
   --dec-type BP_HORIZONTAL_LAYERED --dec-implem OMS \
-  --dec-h-path ./conf/dec/LDPC/k4096_r45.alist \
+  --dec-h-path ./conf/dec/LDPC/k4096_r12.alist \
+  --pct-type LDPC --pct-fra-size 8192 --pct-pattern "1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
   --dec-ite 30 \
   --mnt-max-fe 1000000 \
   --sim-max-fra 10000 \
   --sim-crit-nostop \
-  --chn-type AWGN -m 1.0 -M 10.0 -s 0.5 \
-  > k4096_r45_BP_HL_OMS_results.txt
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k4096_r12_BP_HL_OMS_results_punctured.txt 
+
+  ./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 4096 \
+  --dec-type BP_HORIZONTAL_LAYERED --dec-implem OMS \
+  --dec-h-path ./conf/dec/LDPC/k4096_r23.alist \
+  --pct-type LDPC --pct-fra-size 6144 --pct-pattern "1,1,1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
+  --dec-ite 30 \
+  --mnt-max-fe 1000000 \
+  --sim-max-fra 10000 \
+  --sim-crit-nostop \
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k4096_r23_BP_HL_OMS_results_punctured.txt
+
+  ./aff3ct -C LDPC --sim-type BFER \
+  --enc-type AZCW --enc-info-bits 4096 \
+  --dec-type BP_HORIZONTAL_LAYERED --dec-implem OMS \
+  --dec-h-path ./conf/dec/LDPC/k4096_r45.alist \
+  --pct-type LDPC --pct-fra-size 5120 --pct-pattern "1,1,1,1,1,1,1,1,1,1,0" \
+  --dec-mwbf-factor 1.0 \
+  --dec-ite 30 \
+  --mnt-max-fe 1000000 \
+  --sim-max-fra 10000 \
+  --sim-crit-nostop \
+  --chn-type AWGN -m 1.0 -M 12.0 -s 0.5 \
+  > k4096_r45_BP_HL_OMS_results_punctured.txt
 
 
   Novel multi-Gbps bit flipping decoders for punctured ldpc codes
